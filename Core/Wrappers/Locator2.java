@@ -3,12 +3,12 @@ package Wrappers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.How;
 
-public class Locator {
+public class Locator2 {
 	private How _type;
 	private String _value;
 	private By _by;
 	
-	public Locator(How type, String value) {
+	public Locator2(How type, String value) {
 		this._type = type;
 		this._value = value;
 		this._by = type.buildBy(value);

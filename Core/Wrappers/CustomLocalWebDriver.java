@@ -16,6 +16,7 @@ import static Common.Utilities.*;
 
 public class CustomLocalWebDriver extends CustomWebDriver {
 	
+	
 	public CustomLocalWebDriver(DriverType type, DriverConfig driverConfig) {
 		try {
 			String exeDriverPath = driverConfig.getProperty(DriverConfig.KEY_EXEC_PATH);
@@ -51,7 +52,7 @@ public class CustomLocalWebDriver extends CustomWebDriver {
         ChromeOptions options = new ChromeOptions();
 		options.addArguments("start-maximized");
 		
-		WEBDRIVER = new ChromeDriver(options);
+		_driver = new ChromeDriver(options);
 	}
 	
 	private void createFirefoxDriver_Windows(String exeDriverPath) throws Exception {
@@ -63,7 +64,7 @@ public class CustomLocalWebDriver extends CustomWebDriver {
 		options.setAcceptInsecureCerts(true);
 		options.setProfile(new FirefoxProfile());
 		
-		WEBDRIVER = new FirefoxDriver(options);
+		_driver = new FirefoxDriver(options);
 		maximizeWindow();
 	}
 	
@@ -72,7 +73,7 @@ public class CustomLocalWebDriver extends CustomWebDriver {
 		String driverFilePath = getProjectPath() + File.separator + exeDriverPath;
 		System.setProperty("webdriver.edge.driver", driverFilePath);
 		
-		WEBDRIVER = new EdgeDriver();
+		_driver = new EdgeDriver();
 		maximizeWindow();
 	}
 }

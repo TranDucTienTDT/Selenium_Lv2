@@ -10,31 +10,30 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static Constant.Constant.*;
-
 public class CustomWebDriver {
+	
+	protected static WebDriver _driver;
 
 	public static void openBrowser(String browserName) {
 		switch (browserName){
 		case "Chrome":
 			//System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath() + "\\Executables\\chromedriver.exe");
-			WEBDRIVER = new ChromeDriver();
+			_driver = new ChromeDriver();
 			break;
 		case "Firefox":
-			WEBDRIVER = new FirefoxDriver();
+			_driver = new FirefoxDriver();
 			break;
 		case "Egde":
-			WEBDRIVER = new EdgeDriver();
+			_driver = new EdgeDriver();
 			break;
 		case "IE":
-			WEBDRIVER = new InternetExplorerDriver();
+			_driver = new InternetExplorerDriver();
 			break;
 		case "Safari":
-			WEBDRIVER = new SafariDriver();
+			_driver = new SafariDriver();
 			break;
 		case "Coccoc":
 			System.out.println("mo coccoc");
@@ -45,48 +44,48 @@ public class CustomWebDriver {
 	}
 	
 	public static void maximizeWindow() {
-		WEBDRIVER.manage().window().maximize();
+		_driver.manage().window().maximize();
 	}
 	
-	public static void visitPage(String url) {
-		WEBDRIVER.get(url);
+	public void visitPage(String url) {
+		_driver.get(url);
 	}
 
 	public static void navigateTo(String url) {
-		WEBDRIVER.navigate().to(url);
+		_driver.navigate().to(url);
 	}
 	
 	public String getCurrentUrl() {
-		return WEBDRIVER.getCurrentUrl();
+		return _driver.getCurrentUrl();
 	}
 
 	public static WebElement getWebElement(By locator) {
-		return WEBDRIVER.findElement(locator);
+		return _driver.findElement(locator);
 	}
 	
 
 	public static List<WebElement> getAllWebElements(By locator){
-		return WEBDRIVER.findElements(locator);
+		return _driver.findElements(locator);
 	}
 	
 	public static String getTitle() {
-		return WEBDRIVER.getTitle();
+		return _driver.getTitle();
 	}
 	
 	public static String switchToAlertGetText() {
-		return WEBDRIVER.switchTo().alert().getText();
+		return _driver.switchTo().alert().getText();
 	}
 	
-	public static void quit(){
-        if (WEBDRIVER != null){
-            WEBDRIVER.quit();
+	public void quit(){
+        if (_driver != null){
+        	_driver.quit();
         }
 	}
 	
 	public static void close(){
         
-        if (WEBDRIVER != null){
-        	WEBDRIVER.close();
+        if (_driver != null){
+        	_driver.close();
         }
     }
 	
@@ -94,7 +93,7 @@ public class CustomWebDriver {
 	public WebElement waitForPresent(By locator, int timeOutInSeconds) {
 		WebElement element = null;
 		try {
-			WebDriverWait wait = new WebDriverWait(WEBDRIVER, timeOutInSeconds);
+			WebDriverWait wait = new WebDriverWait(_driver, timeOutInSeconds);
 			element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		} catch (Exception error) {
 			throw error;

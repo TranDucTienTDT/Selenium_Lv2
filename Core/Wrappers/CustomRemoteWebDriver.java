@@ -60,7 +60,7 @@ public class CustomRemoteWebDriver extends CustomWebDriver {
 	
 		options.addArguments("start-maximized");
 	
-		WEBDRIVER = new RemoteWebDriver(new URL(remoteURL), options);
+		_driver = new RemoteWebDriver(new URL(remoteURL), options);
 	}
 	
 	private void createRemoteFirefoxDriver_Windows(String remoteURL) throws MalformedURLException {
@@ -69,14 +69,14 @@ public class CustomRemoteWebDriver extends CustomWebDriver {
 		options.setAcceptInsecureCerts(true);
 		options.setProfile(new FirefoxProfile());
 		
-		WEBDRIVER = new RemoteWebDriver(new URL(remoteURL), options);
+		_driver = new RemoteWebDriver(new URL(remoteURL), options);
 		maximizeWindow();
 	}
 	
 	private void createRemoteEdgeDriver_Windows(String remoteURL) throws MalformedURLException {
 		
 		EdgeOptions options = new EdgeOptions();
-		WEBDRIVER = new RemoteWebDriver(new URL(remoteURL), options);
+		_driver = new RemoteWebDriver(new URL(remoteURL), options);
 		maximizeWindow();
 		
 	}

@@ -10,27 +10,10 @@ import Wrappers.DriverManager;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import static Wrappers.CustomWebDriver.*;
-
 import java.lang.reflect.Method;
 import java.util.Collection;
 
-import static Constant.Constant.*;
-
 public class TestBase {
-
-  //@BeforeMethod
-  public void beforeMethod() {
-	  openBrowser("Chrome");
-	  visitPage(DASHBOARD_URL);
-	  maximizeWindow();
-  }
-
-  //@AfterMethod
-  public void afterMethod() {
-	  quit();
-  }
-  
   
   @Parameters({ "environment" })
   @BeforeMethod(alwaysRun = true)
