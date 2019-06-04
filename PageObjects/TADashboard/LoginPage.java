@@ -1,15 +1,9 @@
 package TADashboard;
 
-import static Wrappers.CustomWebElement.*;
+import Common.POMBase;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.How;
-
-import Wrappers.Locator2;
-
-public class LoginPage {
+public class LoginPage extends POMBase {
 
 
 	
-	
-}
+s
